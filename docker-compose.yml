@@ -10,16 +10,16 @@ services:
     ports:
       - 8000:8000
     volumes:
-      - ./drf_api_project/:/app/drf_api_project/
+      - ./cur_project/:/app/cur_project/
     depends_on:
       - db
     links:
       - db:postgres
-    command: >
-      bash -c "python wait_for_postgres.py &&
-               python manage.py migrate &&
-               python manage.py collectstatic --noinput &&
-               gunicorn -b 0.0.0.0:8000 drf_api_project.wsgi"
+    # command: >
+    #   bash -c "python wait_for_postgres.py &&
+    #            python manage.py migrate &&
+    #            python manage.py collectstatic --noinput &&
+    #            gunicorn -b 0.0.0.0:8000 drf_api_project.wsgi"
   db:
     image: postgres
     container_name: postgres.postit
@@ -44,6 +44,6 @@ services:
       - 80:80
     links:
       - postit:postit
-    volumes:
-      - ./drf_api_project/static:/app/static
-      - ./drf_api_project/media:/app/media
+    # volumes:
+    #   - ./drf_api_project/static:/app/static
+    #   - ./drf_api_project/media:/app/media
