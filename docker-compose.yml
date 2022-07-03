@@ -10,7 +10,7 @@ services:
     ports:
       - 8000:8000
     volumes:
-      - ./drf_api_project/:/app/drf_api_project/
+      - ./crypto_trial_project/:/app/crypto_trial_project/
     depends_on:
       - db
     links:
