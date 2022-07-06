@@ -2,27 +2,25 @@ version: '3.7'
 services:
   postit:
     build: .
-    image: python:postit
-    container_name: postit.dev
+    image: crypto
+    container_name: crypto
     tty: true
     stdin_open: true
     restart: always
     ports:
       - 8000:8000
     volumes:
-      - ./crypto_trial_project/:/app/crypto_trial_project/
+      - ./crypto/:/app/crypto/
     depends_on:
       - db
-    links:
-      - db:postgres
     command: >
       bash -c "python wait_for_postgres.py &&
                python manage.py migrate &&
                python manage.py collectstatic --noinput &&
-               gunicorn -b 0.0.0.0:8000 drf_api_project.wsgi"
+               gunicorn -b 0.0.0.0:8000 crypto.wsgi"
   db:
     image: postgres
-    container_name: postgres.postit
+    container_name: postgres.crypto
     restart: always
     ports:
       - 5432:5432
@@ -37,13 +35,11 @@ services:
     #   - database.env
   nginx:
     build: ./nginx/
-    image: nginx:postit
-    container_name: postit.nginx
+    image: nginx
+    container_name: nginx
     restart: always
     ports:
       - 80:80
-    links:
-      - postit:postit
     volumes:
-      - ./drf_api_project/static:/app/static
-      - ./drf_api_project/media:/app/media
+      - ./crypto/static:/app/static
+      - ./crypto/media:/app/media
