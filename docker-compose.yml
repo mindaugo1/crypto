@@ -20,7 +20,7 @@ services:
                gunicorn -b 0.0.0.0:8000 crypto.wsgi"
   db:
     image: postgres
-    container_name: postgres.crypto
+    container_name: postgres
     restart: always
     ports:
       - 5432:5432
