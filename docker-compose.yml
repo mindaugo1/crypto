@@ -19,7 +19,7 @@ services:
                python manage.py collectstatic --noinput &&
                gunicorn -b 0.0.0.0:8000 crypto.wsgi"
   db:
-    image: crypto.postgres
+    image: postgres
     container_name: crypto.postgres
     restart: always
     ports:
@@ -35,7 +35,7 @@ services:
     #   - database.env
   nginx:
     build: ./nginx/
-    image: crypto.nginx
+    image: nginx
     container_name: crypto.nginx
     restart: always
     ports:
