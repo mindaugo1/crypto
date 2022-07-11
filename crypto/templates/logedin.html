@@ -1,0 +1,253 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Logged in page</h1>
+
+<p>Logged in page</p>
+
+<html>
+<head>
+<link rel="stylesheet" href="mystyle.css">
+</head>
+<body>
+
+<h1>Crypto trading strategy bot</h1>
+<br>
+
+<h2>Strategy 1</h2>
+<form action="#">
+
+    <label for="ema">Crypto:</label>
+
+    <select name="crypto" id="crypto">
+      <option value="btc">BTC</option>
+      <option value="ath">ETH</option>
+      <option value="atom">ATOM</option>
+      <option value="dot">DOT</option>
+      <option value="link">LINK</option>
+    </select>
+    <br>
+        
+    <label for="crypto">If the currency was increasing/decreasing:</label><br>
+    <select name="crypto" id="crypto">
+      <option value="btc">green candles in a row</option>
+      <option value="ath">red candles in a row</option>
+    </select>
+
+      <label for="lname">for:</label>
+      <input type="text" id="lname" name="lname">
+
+      <label for="ema">time period</label>
+      <select name="ematime" id="EMAtime">
+        <option value="ema1h">1h</option>
+        <option value="ema4h">4h</option>
+        <option value="emad">daily</option>
+        <option value="emaw">weekly</option>
+      </select><br>
+
+
+      <br>
+      <input type="submit" value="Submit" />
+      <br>
+      <br>
+      <h2>Strategy 2</h2>
+
+
+      <label for="ema">Crypto:</label>
+
+      <select name="crypto" id="crypto">
+        <option value="btc">BTC</option>
+        <option value="ath">ETH</option>
+        <option value="atom">ATOM</option>
+        <option value="dot">DOT</option>
+        <option value="link">LINK</option>
+      </select>
+      <br>
+
+      <label for="crypto">If the currency was</label>
+      <select name="crypto" id="crypto">
+        <option value="btc">increasing</option>
+        <option value="ath">decreasing</option>
+      </select>
+      <label for="lname">by %:</label>
+        <input type="text" id="lname" name="lname">
+      <label for="crypto">for time period:</label>
+      <input type="text" id="lname" name="lname">
+      <select name="ematime" id="EMAtime">
+        <option value="ema1h">1h</option>
+        <option value="ema4h">4h</option>
+        <option value="emad">daily</option>
+        <option value="emaw">weekly</option>
+      </select>
+
+        <br>
+        <br>
+        <input type="submit" value="Submit" />
+      
+  <br>
+  <br>
+  <br>
+
+    <h2>Strategy 3</h2>
+
+      <br>
+      <label for="ema">Crypto:</label>
+
+      <select name="crypto" id="crypto">
+        <option value="btc">BTC</option>
+        <option value="ath">ETH</option>
+        <option value="atom">ATOM</option>
+        <option value="dot">DOT</option>
+        <option value="link">LINK</option>
+      </select>
+      <br>
+      <br>
+      
+      <label for="ema">EMA:</label>
+      <select name="ematime" id="EMAtime">
+        <option value="ema1h">1h</option>
+        <option value="ema4h">4h</option>
+        <option value="emad">daily</option>
+        <option value="emaw">weekly</option>
+      </select>
+      <select name="ema" id="EMA">
+        <option value="ema21d">EMA21</option>
+        <option value="ema50d">EMA50</option>
+        <option value="ema100d">EMA100</option>
+        <option value="ema150d">EMA150</option>
+        <option value="ema200d">EMA200</option>
+      </select>
+      <br>
+      <br>
+      
+      <label for="rsitime">RSI:</label>
+      <select name="rsitime" id="rsitime">
+        <option value="rsi1h">1h</option>
+        <option value="rsi4h">4h</option>
+        <option value="rsid">daily</option>
+        <option value="rsiw">weekly</option>
+      </select>
+      <select name="rsimath" id="rsimath">
+        <option value="more50w">more than</option>
+        <option value="more60w">more than or equal</option>
+        <option value="more70w">less than</option>
+        <option value="more80w">less than or equal</option>
+      </select>
+      <select name="rsinumber" id="rsinumber">
+        <option value="rsi10">10</option>
+        <option value="rsi20">20</option>
+        <option value="rsi30">30</option>
+        <option value="rsi40">40</option>
+        <option value="rsi50">50</option>
+        <option value="rsi60">60</option>
+        <option value="rsi70">70</option>
+        <option value="rsi80">80</option>
+        <option value="rsi90">90</option>
+      </select>
+      <br>
+      <br>
+      <input type="submit" value="Submit" />
+</form>
+<br><br><br><br>
+
+</body>
+</html>
+
+
+
+<!--                 
+<div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+      Choose your currency
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableInside">
+      <li><a class="dropdown-item" href="#" value="USD">USD</a></li>
+      <li><a class="dropdown-item" href="#">EUR</a></li>
+      <li><a class="dropdown-item" href="#">Dropdown 3</a></li>
+    </ul>
+  </div>
+
+
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+      Choose cripto currency
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdown">
+      <li><a class="dropdown-item" value="1" href="#">Dropdown item</a></li>
+      <li><a class="dropdown-item" href="#">Dropdown item</a></li>
+      <li><a class="dropdown-item" href="#">Dropdown item</a></li>
+    </ul>
+  </div>
+
+
+
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+      Time period
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdown">
+      <li><a class="dropdown-item" href="#">Dropdown item</a></li>
+      <li><a class="dropdown-item" href="#">Dropdown item</a></li>
+      <li><a class="dropdown-item" href="#">Dropdown item</a></li>
+    </ul>
+  </div>
+
+
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+      Additional indicator
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdown">
+      <li><a class="dropdown-item" href="#">Dropdown item</a></li>
+      <li><a class="dropdown-item" href="#">Dropdown item</a></li>
+      <li><a class="dropdown-item" href="#">Dropdown item</a></li>
+    </ul>
+  </div>
+
+
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+      Additional indicator
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdown">
+      <li><a class="dropdown-item" href="#">Dropdown item</a></li>
+      <li><a class="dropdown-item" href="#">Dropdown item</a></li>
+      <li><a class="dropdown-item" href="#">Dropdown item</a></li>
+    </ul>
+  </div>
+
+
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+      Dropdown
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdown">
+      <li><a class="dropdown-item" href="#">Dropdown item</a></li>
+      <li><a class="dropdown-item" href="#">Dropdown item</a></li>
+      <li><a class="dropdown-item" href="#">Dropdown item</a></li>
+    </ul>
+  </div>
+
+
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+      Dropdown
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdown">
+      <li><a class="dropdown-item" href="#">Dropdown item</a></li>
+      <li><a class="dropdown-item" href="#">Dropdown item</a></li>
+      <li><a class="dropdown-item" href="#">Dropdown item</a></li>
+    </ul>
+  </div>
+
+
+
+
+  <button type="button" class="btn btn-primary btn-lg">Submit button</button>
+  <button type="button" class="btn btn-secondary btn-lg">Back button</button>
+
+-->
+
+{% endblock content %}
+
