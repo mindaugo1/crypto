@@ -21,4 +21,5 @@ class Detail(models.Model):
     models.ForeignKey(Crypto, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'ID: {self.id}, Time stamp: {self.time_stamp}, Open: {self.open}, High: {self.high}, Low: {self.low}, Close: {self.close}'
+        return f'ID: {self.id}, Time stamp: {self.time_stamp}, Open: {self.open}, High: {self.high}, ' \
+               f'Low: {self.low}, Close: {self.close}'
