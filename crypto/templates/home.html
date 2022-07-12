@@ -1,3 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Homepage</h1>
+
+<h1>CRYPTO</h1>
+
+
+
+
+<h2>Choose your trading strategy and build your trading bot <i class="bi bi-alarm"></i> </h2>
+
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="..." class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="..." class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="..." class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+<h2>Choose your favorite crypto</h2>
+
+<button type="button" class="btn btn-secondary btn-lg">Choose your favorite crypto</button>
+
+<h2>Need help?</h2>
+
+<li>FAQs</li>
+<li>Blog</li>
+
+
+{% endblock content %}
 {% if user.is_authenticated %}
     <div class="alert alert-success" role="alert">
         <h3>Welcome {{ user.username }}!</h3>
