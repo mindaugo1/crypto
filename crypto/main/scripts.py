@@ -2,7 +2,7 @@ import requests
 import os
 import pandas as pd
 import csv
-from models import Crypto, Detail
+from crypto.main.models import Detail
 
 api_key = os.getenv('CNODG5LTW3G2W1Z4')
 base_url = 'https://www.alphavantage.co/query?'
