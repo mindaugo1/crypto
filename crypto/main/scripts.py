@@ -2,6 +2,7 @@ import requests
 import os
 import pandas as pd
 import csv
+from models import Crypto, Detail
 
 api_key = os.getenv('CNODG5LTW3G2W1Z4')
 base_url = 'https://www.alphavantage.co/query?'
@@ -21,8 +22,16 @@ lines = csv_string.splitlines()
 reader = csv.reader(lines)
 parsed_csv = list(reader)
 reader = csv.reader(lines)
-parsed_csv = list(reader)
-print(parsed_csv)
+parsed_data = list(reader)
+
+list_of_ds_objects = []
+for row in parsed_data[1:]:
+    crypto_row = Detail(time_stamp=row[0] , open=row[1], high=row[2], low=row[3], close=row[4], volume=row[5], market_up=row[6], created_cap=row[7], currency_name=1)
+    crypto_row.save()
+    
+
+
+# print(parsed_csv)
 
 # with open('BTC.csv', 'wb') as file:
 #     file.write(response.content)

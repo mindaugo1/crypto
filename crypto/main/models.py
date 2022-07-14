@@ -20,9 +20,9 @@ class Detail(models.Model):
     high = models.CharField(max_length=500)
     low = models.CharField(max_length=500)
     close = models.CharField(max_length=500)
-    volume = models.CharField(max_length=500)
-    market_up = models.CharField(max_length=500)
-    created_cap = models.DateTimeField(auto_now_add=True)
+    volume = models.CharField(max_length=500, null=True)
+    market_cap = models.CharField(max_length=500, null=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
     currency_name = models.ForeignKey(Crypto, on_delete=models.CASCADE, null=True)
 
     class Meta:
