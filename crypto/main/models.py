@@ -20,7 +20,9 @@ class Detail(models.Model):
     high = models.CharField(max_length=500)
     low = models.CharField(max_length=500)
     close = models.CharField(max_length=500)
-    created_at = models.DateTimeField(auto_now_add=True)
+    volume = models.CharField(max_length=500)
+    market_up = models.CharField(max_length=500)
+    created_cap = models.DateTimeField(auto_now_add=True)
     currency_name = models.ForeignKey(Crypto, on_delete=models.CASCADE, null=True)
 
     class Meta:
@@ -31,4 +33,4 @@ class Detail(models.Model):
 
     def __str__(self):
         return f'ID: {self.pk}, Time stamp: {self.time_stamp}, Open: {self.open}, High: {self.high}, ' \
-               f'Low: {self.low}, Close: {self.close}'
+               f'Low: {self.low}, Close: {self.close}, Volume: {self.volume}, Market_up: {self.market_up}'
