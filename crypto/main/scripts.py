@@ -2,7 +2,7 @@ import requests
 import os
 import pandas as pd
 import csv
-from .models import Detail
+from .models import Crypto, Detail
 
 
 def get_data():
@@ -29,7 +29,7 @@ def get_data():
     list_of_ds_objects = []
     for row in parsed_data[1:]:
         crypto_row = Detail(time_stamp=row[0], open=row[1], high=row[2], low=row[3], close=row[4], volume=row[5],
-                            market_up=row[6], created_cap=row[7], currency_name=1)
+                            market_cap=row[6], created_at=row[7])
         crypto_row.save()
 
 # print(parsed_csv)

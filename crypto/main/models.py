@@ -7,7 +7,15 @@ from django.db import models
 
 
 class Crypto(models.Model):
-    name = models.CharField(max_length=500)
+    CRYPTO_CHOICES = [
+        ('BTC', 'Bitcoin'),
+        ('ETH', 'Etherium'),
+        ('SOL', 'Solana'),
+    ]
+    crypto = models.CharField(max_length=512, choices=CRYPTO_CHOICES, default='')
+
+    def __str__(self):
+        return f'Crypto Name: {self.crypto}'
 
     class Meta:
         ordering = ('pk',)
@@ -23,14 +31,14 @@ class Detail(models.Model):
     volume = models.CharField(max_length=500, null=True)
     market_cap = models.CharField(max_length=500, null=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
-    currency_name = models.ForeignKey(Crypto, on_delete=models.CASCADE, null=True)
+    # currency_name = models.ForeignKey(Crypto, on_delete=models.CASCADE, default='')
 
     class Meta:
         ordering = ('pk',)
         indexes = [
-            models.Index(fields=['time_stamp', 'open', 'high', 'low', 'close', 'created_at']),
+            models.Index(fields=['time_stamp', 'open', 'high', 'low', 'close', 'volume', 'market_cap', 'created_at']),
         ]
 
     def __str__(self):
-        return f'ID: {self.pk}, Time stamp: {self.time_stamp}, Open: {self.open}, High: {self.high}, ' \
-               f'Low: {self.low}, Close: {self.close}, Volume: {self.volume}, Market_up: {self.market_up}'
+        return f'Time stamp: {self.time_stamp}, Open: {self.open}, High: {self.high}, ' \
+               f'Low: {self.low}, Close: {self.close}, Volume: {self.volume}, Market_cap: {self.market_cap}'
