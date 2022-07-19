@@ -28,6 +28,4 @@ def parse_response(response):
 def run_script(symbol, market):
     response = get_raw_response(symbol, market)
     data = parse_response(response)
-    print("----")
-    print(data)
 
