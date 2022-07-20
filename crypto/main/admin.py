@@ -2,5 +2,15 @@ from django.contrib import admin
 
 from main.models import Detail, Crypto
 
-admin.site.register(Detail)
+
+class YourModelAdmin(admin.ModelAdmin):
+    list_filter = [
+        "currency",
+    ]
+    search_fields = (
+        "currency_name",
+    )
+
+
+admin.site.register(Detail, YourModelAdmin)
 admin.site.register(Crypto)

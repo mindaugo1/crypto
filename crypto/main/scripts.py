@@ -21,18 +21,19 @@ def parse_response(response):
     return list(reader)
 
 
-def upload_to_database(data, market):
+def upload_to_database(data, market, symbol):
     list_of_ds_objects = []
-    print('test')
+    if not Crypto.objects.filter(crypto=symbol):
+        Crypto(crypto=symbol).save()
     for row in data[1:]:
         crypto_row = Detail(time_stamp=row[0], open=row[1], high=row[2], low=row[3], close=row[4], volume=row[5],
-                            market_cap=row[6], created_at=row[7], currency=market)
+                            market_cap=row[6], created_at=row[7], currency=market,
+                            currency_name_id=Crypto.objects.filter(crypto=symbol).first().id)
         list_of_ds_objects.append(crypto_row)
     Detail.objects.bulk_create(list_of_ds_objects)
-
 
 
 def run_script(symbol, market):
     response = get_raw_response(symbol, market)
     data = parse_response(response)
-    upload_to_database(data, market)
+    upload_to_database(data, market, symbol)
