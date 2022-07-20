@@ -28,7 +28,8 @@ def upload_to_database(data, market, symbol):
     if not crypto:
         crypto = Crypto(crypto=symbol).save()
 
-    existing_dates = list(Detail.objects.filter(currency_name_id=crypto.id, currency=market).values_list('time_stamp', flat=True))
+    existing_dates = list(Detail.objects.filter(currency_name_id=crypto.id,
+                                                currency=market).values_list('time_stamp', flat=True))
     for row in data[1:]:
         if row[0] not in existing_dates:
             crypto_row = Detail(time_stamp=row[0], open=row[1], high=row[2], low=row[3], close=row[4], volume=row[5],
