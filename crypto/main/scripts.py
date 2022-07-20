@@ -23,13 +23,19 @@ def parse_response(response):
 
 def upload_to_database(data, market, symbol):
     list_of_ds_objects = []
-    if not Crypto.objects.filter(crypto=symbol):
-        Crypto(crypto=symbol).save()
+    crypto = Crypto.objects.filter(crypto=symbol).first()
+    
+    if not crypto:
+        crypto = Crypto(crypto=symbol).save()
+
+    existing_dates = list(Detail.objects.filter(currency_name_id=crypto.id).values_list('time_stamp', flat=True))
     for row in data[1:]:
-        crypto_row = Detail(time_stamp=row[0], open=row[1], high=row[2], low=row[3], close=row[4], volume=row[5],
-                            market_cap=row[6], created_at=row[7], currency=market,
-                            currency_name_id=Crypto.objects.filter(crypto=symbol).first().id)
-        list_of_ds_objects.append(crypto_row)
+        if row[0] not in existing_dates:
+            crypto_row = Detail(time_stamp=row[0], open=row[1], high=row[2], low=row[3], close=row[4], volume=row[5],
+                                market_cap=row[6], created_at=row[7], currency=market,
+                                currency_name_id=crypto.id)
+            list_of_ds_objects.append(crypto_row)
+
     Detail.objects.bulk_create(list_of_ds_objects)
 
 
