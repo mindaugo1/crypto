@@ -1,11 +1,13 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from main import views
+from . import views
 
 router = DefaultRouter()
 
-
 urlpatterns = [
     path('', include(router.urls)),
+    path('labas/<slug:vardas>', views.random_view, name='labas'),
+    path('', views.home, name='home'),
+    path('register/', views.register, name='register'),
 ]
 

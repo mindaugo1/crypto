@@ -21,3 +21,9 @@ def register(request):
 
     context = {'form': form}
     return render(request, 'register.html', context)
+
+def random_view(request, vardas):
+    context = {'labas': 'labas vakaras', 'vardas': vardas}
+    return render(request, 'random.html', context)
+
+    
