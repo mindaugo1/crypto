@@ -13,6 +13,6 @@ def get_moving_avarage(start_date, days, crypto, currency):
             currency_name_id=crypto.id, currency=currency, time_stamp__gte=date_start
         ).values("close")
     )
-	
+
     ma = sum([Decimal(row.get("close")) for row in close_prices]) / len(close_prices)
     return ma
