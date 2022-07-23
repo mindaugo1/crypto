@@ -5,6 +5,11 @@ from .forms import UserRegistrationForm
 from .strategy import get_moving_average, get_date_range
 import seaborn as sns
 from io import BytesIO
+import base64
+import matplotlib as plt
+from django.shortcuts import render
+import pandas as pd
+import openpyxl
 
 
 
@@ -28,6 +33,7 @@ def register(request):
 
 
 def graph_view(request, vardas):
+    plt.use('Agg')
     date_range = get_date_range(numdays=10)
     list_of_moving_average = []
     for day in date_range:
