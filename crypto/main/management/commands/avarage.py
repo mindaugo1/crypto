@@ -8,6 +8,6 @@ class Command(BaseCommand):
 		range_ = get_date_range()
 		print("--------------")
 		for date in range_:
-			ma50 = get_moving_avarage(start_date=date, days=50, currency="EUR", crypto="BTC") 
+			ma50 = get_moving_avarage(date=date, numdays=50, currency="EUR", crypto="BTC") 
 			print(ma50)
 
