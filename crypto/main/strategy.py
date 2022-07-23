@@ -1,6 +1,8 @@
 from datetime import datetime, timedelta
 from decimal import Decimal
 
+from numpy import double
+
 from .models import Detail, Crypto
 
 def get_date_range(numdays):
@@ -11,8 +13,7 @@ def get_date_range(numdays):
 
 
 
-def get_moving_avarage(date, numdays, crypto, currency):
-    print(type(date))
+def get_moving_avarege(date, numdays, crypto, currency):
     date_start = datetime.strptime(date, "%Y-%m-%d") - timedelta(days=numdays)
 
     crypto = Crypto.objects.filter(crypto=crypto).first()
@@ -22,5 +23,5 @@ def get_moving_avarage(date, numdays, crypto, currency):
         ).values("close")
     )
 
-    ma = sum([Decimal(row.get("close")) for row in close_prices]) / len(close_prices)
+    ma = sum([double(row.get("close")) for row in close_prices]) / len(close_prices)
     return ma
