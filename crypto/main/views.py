@@ -40,8 +40,8 @@ def graph_view(request, vardas):
         ma = get_moving_average(date=day, numdays=50, crypto="BTC", currency="EUR")
         list_of_moving_average.append(ma)
 
-    moving_graph = sns.lineplot(data=list_of_moving_average, x='date',
-                                y='ma', legend='full')
+    moving_graph = sns.lineplot(data=list_of_moving_average, x=date_range,
+                                y=list_of_moving_average, legend='full')
     fig = moving_graph.figure
     graph_file = BytesIO()
     fig.savefig(graph_file, format='png')
