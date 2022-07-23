@@ -5,10 +5,10 @@ from main.models import Detail, Crypto
 
 class YourModelAdmin(admin.ModelAdmin):
     list_filter = [
-        "currency",
+        'currency',
     ]
     search_fields = (
-        "currency_name",
+        'currency_name',
     )
 
 

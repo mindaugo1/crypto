@@ -10,18 +10,22 @@ function = 'DIGITAL_CURRENCY_DAILY'
 
 
 def get_raw_response(symbol, market, base_url=base_url, function=function):
+    """ Cryptocurrency data is received from the provided source """
     return requests.get(
         f'{base_url}function={function}&symbol={symbol}&market={market}&apikey={None}&datatype=csv')
 
 
 def parse_response(response):
+    """ Data is prepared and divided into a table """
     csv_string = response.content.decode('utf-8')
-    lines = csv_string.splitlines()
-    reader = csv.reader(lines)
+    splitting_to_lines = csv_string.splitlines()
+    reader = csv.reader(splitting_to_lines)
     return list(reader)
 
 
 def upload_to_database(data, market, symbol):
+    """ The user selects a currency, if it is not available, it is written to the database as new.
+    If the currency is found, the data is transferred to the database """
     list_of_ds_objects = []
     crypto = Crypto.objects.filter(crypto=symbol).first()
 
@@ -41,6 +45,7 @@ def upload_to_database(data, market, symbol):
 
 
 def run_script(symbol, market):
+    """ The market and symbol are submitted and command is called for transfer data """
     response = get_raw_response(symbol, market)
     data = parse_response(response)
     upload_to_database(data, market, symbol)

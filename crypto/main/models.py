@@ -9,7 +9,7 @@ class Crypto(models.Model):
 
     class Meta:
         ordering = ('pk',)
-        verbose_name_plural = "Crypto"
+        verbose_name_plural = 'Crypto'
 
 
 class Detail(models.Model):

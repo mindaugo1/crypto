@@ -10,6 +10,7 @@ import matplotlib.pylab as plt
 class Command(BaseCommand):
 
     def handle(self, **options):
+        """ A curve is drawn based on the cryptocurrency moving average and the selected date """
         date_range = get_date_range(numdays=10)
         ma50_list = []
         ma200_list = []
@@ -22,23 +23,23 @@ class Command(BaseCommand):
         data_1 = {"day": date_range, "ma50": ma50_list}
         data_2 = {"day": date_range, "ma200": ma200_list}
 
-        hi_1 = pd.DataFrame(data_1)
-        hi_2 = pd.DataFrame(data_2)
-        print(hi_1)
+        plot_1 = pd.DataFrame(data_1)
+        plot_2 = pd.DataFrame(data_2)
+        print(plot_1)
 
-        df = pd.DataFrame({"ma50": ma50_list,
-                           "ma200": ma200_list})
+        df = pd.DataFrame({'ma50': ma50_list,
+                           'ma200': ma200_list})
 
-        p = sns.lineplot(data=df)
-        p.set(xlabel="date", ylabel="ma")
+        moving_average_plot = sns.lineplot(data=df)
+        moving_average_plot.set(xlabel='date', ylabel='ma')
         plt.gcf().set_size_inches(13, 10)
         plt.grid()
 
 
-        # sns.set(style="whitegrid", font_scale=0.5, rc={"lines.linewidth": 2})
-        # sns.set_context("paper")
-        # plottt_1 = sns.lineplot(x="day", y="ma50", data=hi_1, color="red")
-        # plottt_2 = sns.lineplot(x="day", y="ma200", data=hi_2, color="blue")
+        # sns.set(style='whitegrid', font_scale=0.5, rc={'lines.linewidth': 2})
+        # sns.set_context('paper')
+        # plottt_1 = sns.lineplot(x='day', y='ma50', data=hi_1, color='red')
+        # plottt_2 = sns.lineplot(x='day', y='ma200', data=hi_2, color='blue')
         # plt.xticks(rotation=45)
         # plt.gcf().set_size_inches(13, 10)
-        p.figure.savefig("./fadfasdfadsf50.jpg")
+        moving_average_plot.figure.savefig('./fadfasdfadsf50.jpg')
