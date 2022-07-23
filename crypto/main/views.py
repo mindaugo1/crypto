@@ -4,6 +4,8 @@ from django.contrib import messages
 from .forms import UserRegistrationForm
 from .strategy import get_moving_average, get_date_range
 import seaborn as sns
+from io import BytesIO
+
 
 
 def home(request):
