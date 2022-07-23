@@ -32,20 +32,20 @@ def register(request):
 
 
 def graph_view(request, vardas):
-    plt.use('Agg')
     date_range = get_date_range(numdays=10)
-    list_of_moving_average = []
+    ma50_list = []
+    ma200_list = []
     for day in date_range:
         ma = get_moving_average(date=day, numdays=50, crypto="BTC", currency="EUR")
-        list_of_moving_average.append(ma)
+        ma200 = get_moving_average(date=day, numdays=50, crypto="BTC", currency="EUR")
+        ma50_list.append(ma)
+        ma200_list.append(ma200)
 
-    moving_graph = sns.lineplot(data=list_of_moving_average, x=date_range,
-                                y=list_of_moving_average, legend='full')
-    plt.savefig('static/square_plot.png')
-    fig = moving_graph.figure
-    graph_file = io.BytesIO()
-    fig.savefig(graph_file, format='png')
-    figfile.seek(0)
-    encoded_file = base64.b64encode(graph_file.getvalue())
-    context = {'labas': 'labas vakaras', 'vardas': vardas, 'average': list_of_moving_average, 'png_file': encoded_file}
-    return render(request, 'graph.html', context)
+    data = {"day": date_range, "ma50": ma50_list, "ma200": ma200_list}
+
+    hi = pd.DataFrame(data)
+    print(hi)
+    sns.set(style='whitegrid')
+
+    plottt = sns.scatterplot(x="day", y="ma50", data=hi)
+    plottt.figure.savefig("./fadfasdfadsf.jpg")
