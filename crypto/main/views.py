@@ -12,7 +12,6 @@ import pandas as pd
 import openpyxl
 
 
-
 def home(request):
     return render(request, 'home.html')
 
@@ -42,9 +41,11 @@ def graph_view(request, vardas):
 
     moving_graph = sns.lineplot(data=list_of_moving_average, x=date_range,
                                 y=list_of_moving_average, legend='full')
+    plt.savefig('static/square_plot.png')
     fig = moving_graph.figure
-    graph_file = BytesIO()
+    graph_file = io.BytesIO()
     fig.savefig(graph_file, format='png')
+    figfile.seek(0)
     encoded_file = base64.b64encode(graph_file.getvalue())
     context = {'labas': 'labas vakaras', 'vardas': vardas, 'average': list_of_moving_average, 'png_file': encoded_file}
     return render(request, 'graph.html', context)

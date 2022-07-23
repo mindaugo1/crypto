@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-{{ labas }} {{ vardas }}
-{{ average }} {{ png_file }}
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+    <!-- Boxes -->
+    <div class="container">
+        <li><img src='data:image/png;base64,{{graph_view}}'/></li>
+    </div>  
+{% endblock %}
