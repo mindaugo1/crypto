@@ -1,12 +1,13 @@
 from django.core.management.base import BaseCommand
-from main.strategy import get_moving_avarage
+from main.strategy import get_moving_avarage, get_date_range
 import subprocess
 
 class Command(BaseCommand):
 
 	def handle(self, **options):
+		range_ = get_date_range()
 		print("--------------")
-		for date in ["2022-06-01", "2022-06-02", "2022-06-03", "2022-06-04"]:
+		for date in range_:
 			ma50 = get_moving_avarage(start_date=date, days=50, currency="EUR", crypto="BTC") 
 			print(ma50)
 
